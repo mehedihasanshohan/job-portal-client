@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext/AuthContext';
-// import logo from '../../assets/logo-small.png'
+import logo from '../../assets/logo-small.png'
+import Register from './../register/Register';
 
 const Navbar = () => {
 
@@ -19,9 +20,9 @@ const Navbar = () => {
     }
 
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/"><button  className='btn btn-success'>Home</button></NavLink></li>
+        <li><NavLink to="/"><button  className='btn btn-secondary'>Home</button></NavLink></li>
+        <li><NavLink to="/"><button  className='btn btn-primary'>Home</button></NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -48,7 +49,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">
-                    {/* <img className='w-12' src={logo} alt="" /> */}
+                    <img className='w-12' src={logo} alt="" />
                     <h3 className="text-3xl">Job Portal</h3>
                 </a>
             </div>
@@ -62,9 +63,11 @@ const Navbar = () => {
                     user ? <>
                         <button onClick={handleSignOut} className="btn btn-accent">Sign out</button>
                     </> : <>
-                        <Link to="/register">Register</Link>
+                        <Link to="/register">
+                            <button className='btn btn-info'>Register</button>
+                        </Link>
                         <Link to="/signIn">
-                            <button className="btn">Sign In</button>
+                            <button className="btn btn-accent ml-4">Sign In</button>
                         </Link>
                     </>
                 }
