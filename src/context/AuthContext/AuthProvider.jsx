@@ -1,6 +1,6 @@
 import AuthContext from "./AuthContext"
 import { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../firebase/firebase.init";
 
 const AuthProvider = ({children}) => {
@@ -13,10 +13,16 @@ const AuthProvider = ({children}) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+   const singInUser = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
   const authInfo ={
     user,
     loading,
     createUser,
+    singInUser
   }
 
 

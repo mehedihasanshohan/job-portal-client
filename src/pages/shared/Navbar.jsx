@@ -1,22 +1,22 @@
-// import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// import AuthContext from '../../context/AuthContext/AuthContext';
+import AuthContext from '../../context/AuthContext/AuthContext';
 // import logo from '../../assets/logo-small.png'
 
 const Navbar = () => {
 
-    // const { user, signOutUser } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
-    // const handleSignOut = () => {
-    //     signOutUser()
-    //         .then(() => {
-    //             console.log('successful sign out')
-    //         })
-    //         // eslint-disable-next-line no-unused-vars
-    //         .catch(error => {
-    //             console.log('failed to sign out .stay here. dont leave me alone')
-    //         })
-    // }
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log('successful sign out')
+            })
+            // eslint-disable-next-line no-unused-vars
+            .catch(error => {
+                console.log('failed to sign out .stay here. dont leave me alone')
+            })
+    }
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {/* {
+                {
                     user ? <>
                         <button onClick={handleSignOut} className="btn">Sign out</button>
                     </> : <>
@@ -67,9 +67,10 @@ const Navbar = () => {
                             <button className="btn">Sign In</button>
                         </Link>
                     </>
-                } */}
-                <Link to='/register'>Register</Link>
-                <a className='btn'>Sign In</a>
+                }
+
+                <Link to='/register'><button className='btn btn-accent'>Register</button></Link>
+                <Link to='/signin'><button className='btn btn-info'>Sign in</button></Link>
 
             </div>
         </div>
