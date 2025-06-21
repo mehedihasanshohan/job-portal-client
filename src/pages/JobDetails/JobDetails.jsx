@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const JobDetails = () => {
@@ -20,6 +20,7 @@ const JobDetails = () => {
   if (!job) return <div className="text-center py-10 text-red-500">❌ Job not found</div>;
 
   const {
+    _id,
     title,
     company,
     location,
@@ -60,9 +61,11 @@ const JobDetails = () => {
           <p className="text-lg font-semibold text-red-600">{applicationDeadline}</p>
         </div>
         <div className="flex items-center justify-center">
-          <button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2 px-4 rounded-xl transition">
-            🚀 Apply Now
+          <Link to={`/jobapply/${_id}`}>
+            <button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2 px-4 rounded-xl transition">
+             Apply Now
           </button>
+          </Link>
         </div>
       </div>
 
