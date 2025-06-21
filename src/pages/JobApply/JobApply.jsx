@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const JobApply = () => {
   const { id } = useParams();
+  const {user} = useAuth();
+  console.log(user);
   const [job, setJob] = useState(null);
   const [form, setForm] = useState({
     name: '',
@@ -33,7 +36,9 @@ const JobApply = () => {
       jobId: id,
       jobTitle: job?.title,
       company: job?.company,
-      appliedAt: new Date().toISOString()
+      applicantName: user?.displayName,
+      applicantEmail: user?.email,
+      appliedAt: new Date().toISOString(),
     };
     console.log(applicationData);
 
